@@ -1,0 +1,92 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>Основные данные}"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				
+				<Label text="{i18n>Логин}" />
+				<Input value="{username}" placeholder="username"/>
+				
+				<Label text="{i18n>Имя}" />
+				<Input value="{firstname}" placeholder="firstname">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Input value="{lastname}" placeholder="lastname">
+					<layoutData>
+						<l:GridData span="XL1 L2 M2 S4" />
+					</layoutData>
+				</Input>
+				<Input value="" placeholder="">
+					<layoutData>
+						<l:GridData span="XL1 L1 M1 S1" />
+					</layoutData>
+				</Input>
+				<Label text="{i18n>Пароль}" />
+				<Input type="Password" value="{password}" />
+
+				<Label text="{i18n>Email}" />
+				<Input value="{email}" />  
+				
+				<Label text="{i18n>Статус}" />
+				<Select selectedKey="{status}">
+					<items>
+						<core:Item text="{i18n>Отключено}" key="0"/>
+						<core:Item text="{i18n>Включено}" key="1"/>
+					</items>
+				</Select>
+
+				<Label text="{i18n>Роль}" />
+				<ComboBox selectedKey="{user_group_name}" items="{objectView>/groups}">
+					<core:Item key="{objectView>id}" text="{objectView>name}" />
+				</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+		
+		<!-- TODO: вынести в расширение -->
+		<f:SimpleForm
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="{i18n>Дополнительные данные}"
+			labelSpanXL="4"
+			labelSpanL="3"
+			labelSpanM="4"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="0"
+			emptySpanL="4"
+			emptySpanM="0"
+			emptySpanS="0"
+			columnsXL="2"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false">
+			<f:content>
+				<Label text="{i18n>Субъект РФ}" />
+				<ComboBox selectedKey="{region_id}" items="{objectView>/regions}">
+					<core:Item key="{objectView>id}" text="{objectView>name}" />
+				</ComboBox>
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</core:FragmentDefinition>
